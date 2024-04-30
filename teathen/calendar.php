@@ -97,10 +97,76 @@ for($i=0;$i<6;$i++){
     echo "</tr>";
 }
 
+?>
+</table>
+<style>
+.block-table{
+    width:357px;
+    display:flex;
+    flex-wrap:wrap;
+}
+.item{
+    margin-left:-1px;
+    margin-top:-1px;
+    display:inline-block;
+    width:50px;
+    height:50px;
+    border:1px solid lightgreen; 
+}
+.item-header{
+    margin-left:-1px;
+    margin-top:-1px;
+    display:inline-block;
+    width:50px;
+    height:25px;
+    border:1px solid lightgreen;
+    text-align: center;
+    background-color: darkgreen; 
+    color:lightgreen
+}
+</style>
+<?php 
+
+$days=[];
+for($i=0;$i<42;$i++){
+    $diff=$i-$firstWeekStartDay;
+    $days[]=date("Y-m-d",strtotime("$diff days",$firstDay));
+}
+echo "<pre>";
+print_r($days);
+echo "</pre>";
+echo "<div class='block-table'>";
+echo "<div class='item-header'>日</div>";
+echo "<div class='item-header'>一</div>";
+echo "<div class='item-header'>二</div>";
+echo "<div class='item-header'>三</div>";
+echo "<div class='item-header'>四</div>";
+echo "<div class='item-header'>五</div>";
+echo "<div class='item-header'>六</div>";
+foreach($days as $day){
+    $format=explode("-",$day)[2];
+    $w=date("w",strtotime($day));
+    if($w==0 || $w==6){
+
+        echo "<div class='item' style='background:pink'>$format</div>";
+    }else{
+
+        echo "<div class='item'>$format</div>";
+    }
+}
+echo "</div>";
 
 
 
 ?>
-   
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 </body>
 </html>

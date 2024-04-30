@@ -39,16 +39,21 @@
          
         $countDay=1;    //印出日 用
         $DayIsWeek=strtotime(date("Y-$month-$countDay"));//當日是週幾
-        
+        $MonthlyCalendar=[];    //陣列，依序存放當月份每一格的內容
+
         for ($i=0;$i<6;$i++) {
             echo "<tr>";
             for ($j=0;$j<7;$j++) {
                
                 if (($i==0 && $j<$firstWeekStartDay) || $countDay>$MonthTotalDays) {   //前空白或後空白
                     echo "<td>&nbsp;</td>"; 
+                    $MonthlyCalendar[]="&nbsp;";
+
                 } else {
                     echo "<td>$countDay</td>"; 
+                    $MonthlyCalendar[]=$countDay;
                     $countDay++;
+                    
                 }
                 
             }
@@ -58,7 +63,7 @@
             }
         }    
         echo "</table>";
-
+        print_r($MonthlyCalendar);
         
     ?>
 </body>
