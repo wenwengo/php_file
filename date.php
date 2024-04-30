@@ -26,7 +26,7 @@ echo "今年是".date("Y");
 echo "<br>";
 echo "今天是".date("Y年m月d日");
 echo "<br>";
-$birthday="1974-1-7";
+$birthday="1950-1-7";
 $start=strtotime(date('Y-m-d'));
 $tb=str_replace(mb_substr($birthday,0,4),date("Y"),$birthday);
 if(strtotime($tb)<strtotime('now')){
