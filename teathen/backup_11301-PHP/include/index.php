@@ -48,18 +48,30 @@
             text-align: center;
             width:1000px;
         }
+        .active{
+            background-color:skyblue;
+        }
     </style>
 </head>
 <body>
-<header>首頁標題</header>
-<nav>
-    <a href="index.php">首頁</a>
-    <a href="news.php">最新消息</a>
-    <a href="products.php">產品介紹</a>
-    <a href="contact.php">聯絡我們</a>
-</nav>
+<?php $page=isset($_GET['page'])?$_GET['page']:'main';?>
+<?php include_once "./layouts/header.php";?>
+<?php include_once "./layouts/nav.php";?>
 <marquee>這是一段跑馬燈</marquee>
-<main>主要內容</main>
+<?php 
+    //include "./pages/main.php";
+
+    $file="./pages/{$page}.php";
+    if(file_exists($file)){
+
+        include $file;
+    }else{
+        include "./pages/main.php";
+    }
+
+
+?>
+
 <footer>頁腳</footer>
 </body>
 </html>

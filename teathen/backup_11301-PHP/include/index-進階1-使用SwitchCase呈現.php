@@ -48,13 +48,50 @@
             text-align: center;
             width:1000px;
         }
+        .active{
+            background-color:skyblue;
+        }
     </style>
 </head>
 <body>
+<?php $file=explode(".",basename(__FILE__))[0];?>
 <?php include_once "./layouts/header.php";?>
 <?php include_once "./layouts/nav.php";?>
 <marquee>這是一段跑馬燈</marquee>
-<main>最新消息</main>
+<?php
+        $page=isset($_GET['page'])?($_GET['page']):'index';
+        //避免user將網址page的值砍掉
+
+        switch($_GET['page']){
+            case 'index':
+                include "./page/main.php";
+            break;
+
+            case 'news':
+                include "./page/news.php";
+            break;
+
+            case 'products':
+                include "./page/products.php";
+            break;
+
+            case 'contact':
+                include "./page/contact.php";
+            break;
+
+            case 'guestboo':
+                include "./page/guestboo.php";
+            break;
+
+            default:                        //避免user將網址page的值，亂打參數
+            include "./page/main.php";
+
+
+    }
+?>
+
+<!-- <main>主要內容</main> -->
+
 <footer>頁腳</footer>
 </body>
 </html>
